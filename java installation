@@ -1,0 +1,46 @@
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+
+
+####set JAVA_HOME
+
+cat >> /etc/environment <<EOL
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
+EOL
+
+
+####
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+
+sudo systemctl start jenkins
+
+sudo systemctl status jenkins
+
+sudo ufw allow 8080
+
+        If your /etc/init.d/jenkins file fails to start jenkins, edit the /etc/default/jenkins to replace the line
+		HTTP_PORT=8080
+
+sudo ufw status
+
+       if firewall inactive
+	sudo ufw allow OpenSSH
+	 sudo ufw enable
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+5e2cec13f4b249c6a896a73bac9d03dd
+
+
+https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-16-04
+
