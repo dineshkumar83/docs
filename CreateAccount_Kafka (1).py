@@ -5,7 +5,7 @@ from pyspark.sql.window import Window
 import json
 from pyspark import Row
 import datetime
-import os 
+
 
 # COMMAND ----------
 
